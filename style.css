@@ -1,0 +1,190 @@
+html{
+    margin-bottom: 0em;
+}
+body{
+    background-color: #F4F1DE;
+    font-family: 'Roboto', sans-serif;
+    margin: 0em;
+   
+}
+h1{
+    padding-top: 10px;
+    text-align: left;
+    background-color:black;
+    color: white;
+    margin-top: auto;
+    
+    box-shadow: 3px 3px red, -1em 0 0.4em olive;
+
+}
+
+h2{
+    text-align: center;
+}
+
+h3{
+    text-align:left;
+    margin-left: 0.5em;
+    
+}
+
+p{
+    margin-left: 0.5em;
+}
+
+ul,li{
+    float: right;
+    list-style:none;
+    font-family: 'Roboto', sans-serif;  
+    padding-bottom: 20px;
+    margin: 0.5em;
+    color: #fff;
+}
+
+a{
+    text-decoration: none;
+    font-family:  'Roboto', sans-serif; 
+    color: #fff;
+}
+a:hover{
+
+    background-color: rgb(156, 226, 226);
+    border-radius:20cm;
+
+}
+
+
+img{
+    display:block;
+    margin: auto;
+   /* width: 90%;
+    height:300px;*/
+}
+
+table, th,tr,td{
+    width:600px;
+    padding:15px;
+    margin-left:360px;
+    text-align: center;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th{
+    background-color:rgb(193, 227, 250);
+}
+
+
+
+.tituloprincipal{
+    background-color:rgb(193, 227, 250);
+    height: 100px;
+    text-align: center;
+    padding-top:0.5cm;
+    
+}
+
+#estilo{
+    text-align:left;
+    margin-top: 1cm;
+    margin-left: 0.5em;
+}
+#contenedor{
+    margin-left: 475px;
+}
+form{
+    width:40%;
+    padding:6px;
+    
+}
+label{
+    font-size: 14px;
+    width: 100%;
+}
+
+input,textarea,select{
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+iframe{
+    width: 80%;
+    height:450px;
+    margin-left: 8em;
+}
+
+.contenedor:hover{
+    background-color:black;
+    margin: 40px auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 1em;
+    justify-content: space-around;
+   
+    
+}
+
+.hotsale{
+    background-color:black;
+    margin-left: 280px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 1em;
+    
+
+
+}
+.caja{
+    background-color:#fff ;
+    margin: 5px;
+    padding: 10px;
+    font-size: 40px;
+    border-radius: 1em;
+    display: flex; 
+
+    
+}
+
+
+#foto1{
+    width:250px;
+    height: 275px; 
+    border-radius: 18em;
+   /* -moz-transition-timing-function: cubic-bezier(0.95, 0.05, 0.795, 0.035);*/
+}
+
+#foto2{
+    width:250px;
+    height: 280px;
+    border-radius: 18em;
+
+}
+#foto3{
+    width:250px;
+    height: 280px;
+    border-radius: 18em;
+    
+}
+
+.texto{
+    text-align:center;
+    font-size: 15px;
+    padding-top: 4.5em;
+ 
+    
+
+}
+
+footer{
+    text-align: center;
+    padding: 5px;
+    margin-top: 5em;
+    background-color:black;
+    color: white;
+}
+
+
+
