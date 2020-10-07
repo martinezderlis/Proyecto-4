@@ -1,28 +1,28 @@
-let nombre = ""
-let email = ""
-let confirmacion=""
+let nombre = "";
+let email = "";
+let confirmacion="";
 let mailTo
-const fecha = new Date();
-const hora = fecha.getHours();
-const postUrl = "https://demo2420474.mockable.io/userData"
-const formUrl = "https://demo2420474.mockable.io/submitForm"
-let arrForm =[]
+const FECHA = new Date();
+const HORA = fecha.getHours();
+const POSTURL = "https://demo2420474.mockable.io/userData";
+const FORMURL = "https://demo2420474.mockable.io/submitForm";
+let arrForm =[];
 //Posicionamiento
 
-let inputNombre = document.querySelector("#nombre")
-let inputEmail = document.querySelector("#email")
-let inputTelefono = document.querySelector("#phone")
-let selectTema = document.querySelector("#tema")
-let textMensaje = document.querySelector("#Mensaje")
-let btnEnviar = document.querySelector("#submit")
+let inputNombre = document.querySelector("#nombre");
+let inputEmail = document.querySelector("#email");
+let inputTelefono = document.querySelector("#phone");
+let selectTema = document.querySelector("#tema");
+let textMensaje = document.querySelector("#Mensaje");
+let btnEnviar = document.querySelector("#submit");
 let form = document.querySelector("form");
 
 if (localStorage.getItem("confirmacion")==null){
     
-    confirmacion = confirm("Desea ingresar Nombre e email?")
-    localStorage.setItem("confirmacion", confirmacion)
+    confirmacion = confirm("Desea ingresar Nombre e email?");
+    localStorage.setItem("confirmacion", confirmacion);
     if(confirmacion==true){
-        inicioUsuario()
+        inicioUsuario();
         
       }
     }  
@@ -38,10 +38,10 @@ fetch(postUrl,{
     body: JSON.stringify(arrUsuario) ,
     headers:{'Content-Type':'application/json'}
 }).then(function(response){
-    return response.json()
+    return response.json();
 }).then(function(json){
-    console.log(json)
-})
+    console.log(json);
+});
 
 //Eventos
 
@@ -50,7 +50,7 @@ form.addEventListener("submit",enviarForm);
 //Funciones
 
 function enviarForm(){
-    event.preventDefault()
+    event.preventDefault();
     arrForm = {
         name: inputNombre.value,
         email: inputEmail.value,
@@ -64,44 +64,44 @@ function enviarForm(){
         headers:{'Content-Type':'application/json'}
     })
     .then(function(response){
-        return response.json()
+        return response.json();
     }).then(function(contacto){
-        console.log(contacto)
+        console.log(contacto);
         inputNombre.value =""
         inputEmail.value=""
         inputTelefono.value= ""
         selectTema.value= null
         textMensaje.value=""
-    })
+    });
 }
 
 
 //Inicio de usuario
 function inicioUsuario(){
-    nombreValid()
-    emailValid()
-    saludaHoraInicio()
+    nombreValid();
+    emailValid();
+    saludaHoraInicio();
 }
 
 //Guardar y validar nombre
 function nombreValid(nombre){
     do {
-        nombre = prompt("Ingrese su nombre")
+        nombre = prompt("Ingrese su nombre");
         
         if(nombre.trim() == ""){
-            alert("Ingrese datos validos")
-        }else{return localStorage.setItem("nombre", nombre) }
+            alert("Ingrese datos validos");
+        }else{return localStorage.setItem("nombre", nombre);}
     } while (nombre=="" || nombre!==undefined);
 }
 
 //Guardar y validar email
 function guardarEmail(email){
 
-    email = prompt("Ingrese su email")
-    let arrEmail = email.split("")
+    email = prompt("Ingrese su email");
+    let arrEmail = email.split("");
     if(arrEmail.includes("@") && arrEmail.includes(".")){
-        localStorage.setItem("email", email)
-        enviarMail(mailTo)
+        localStorage.setItem("email", email);
+        enviarMail(mailTo);
     }else{alert("Datos invalidos")}
  
 }
@@ -114,11 +114,11 @@ function emailValid(email){
 
  //Preguntar para enviar mail
 function enviarMail(mail){
-    mail = confirm("Desea recibir mails con novedades?")
+    mail = confirm("Desea recibir mails con novedades?");
      if(mail == true){
-         alert("Estaremos enviandole las ultimas novedades a " + localStorage.getItem("email"))
-         localStorage.setItem("mail", mail)
-         preguntaPopUp(popUp)
+         alert("Estaremos enviandole las ultimas novedades a " + localStorage.getItem("email"));
+         localStorage.setItem("mail", mail);
+         preguntaPopUp(popUp);
         }
  }
 

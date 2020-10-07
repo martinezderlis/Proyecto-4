@@ -3,31 +3,31 @@ let nombre = "";
 let email = "";
 let confirmacion = "";
 let mailTo;
-const fecha = new Date();
-const hora = fecha.getHours();
-let urlBanner = "https://demo2420474.mockable.io/getHomeBanner"
-const postUrl = "https://demo2420474.mockable.io/userData"
+const FECHA = new Date();
+const HORA = fecha.getHours();
+let urlBanner = "https://demo2420474.mockable.io/getHomeBanner";
+const POSTURL = "https://demo2420474.mockable.io/userData";
 
  //Posicionamiento
- let divBanner = document.querySelector(".banner")
+ let divBanner = document.querySelector(".banner");
 
 
 if (localStorage.getItem("confirmacion")==null){
   
-  confirmacion = confirm("Desea ingresar Nombre e email?")
-  localStorage.setItem("confirmacion", confirmacion)
+  confirmacion = confirm("Desea ingresar Nombre e email?");
+  localStorage.setItem("confirmacion", confirmacion);
   if(confirmacion==true){
-    inicioUsuario()
+    inicioUsuario();
     
   }
 }
 
 fetch(urlBanner)
 .then(function(response){
-  return response.json()
+  return response.json();
 })
 .then(function(arrImagen){
-  imagenDOM(arrImagen, divBanner)
+  imagenDOM(arrImagen, divBanner);
   })
  
   let arrUsuario = {
@@ -41,32 +41,32 @@ method: 'POST',
 body: JSON.stringify(arrUsuario) ,
 headers:{'Content-Type':'application/json'}
 }).then(function(response){
-return response.json()
+return response.json();
 }).then(function(json){
-console.log(json)
-})
+console.log(json);
+});
   
   //Funciones
 
   function imagenDOM(imagen, banner){
 
-    banner.innerHTML += `<a title= "LinkImagen" href= "${imagen.link}"><img src = "${imagen.imgUrl}" title = "${imagen.title}" alt="LinkImagen" ></a>`
+    banner.innerHTML += `<a title= "LinkImagen" href= "${imagen.link}"><img src = "${imagen.imgUrl}" title = "${imagen.title}" alt="LinkImagen" ></a>`;
 
   }
  
   //Inicio de usuario
   function inicioUsuario(){
-    nombreValid()
-    emailValid()
+    nombreValid();
+    emailValid();
   }
   //Guardar y validar nombre
   function nombreValid(nombre){
       do {
-          nombre = prompt("Ingrese su nombre")
+          nombre = prompt("Ingrese su nombre");
           
           if(nombre.trim() == ""){
-              alert("Ingrese datos validos")
-          }else{return localStorage.setItem("nombre", nombre) }
+              alert("Ingrese datos validos");
+          }else{return localStorage.setItem("nombre", nombre);}
       } while (nombre=="" || nombre!==undefined);
   }
   //Guardar y validar email

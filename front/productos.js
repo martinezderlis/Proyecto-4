@@ -1,17 +1,17 @@
-let nombre = ""
-let email = ""
-let confirmacion=""
-let mailTo
-let popUp
-const fecha = new Date();
-const hora = fecha.getHours();
-const divContenedor=document.querySelector(".contenedor")
-const url = "https://demo2420474.mockable.io/productList"
-const cuponUrl = "https://demo2420474.mockable.io/getCoupon"
+let nombre = "";
+let email = "";
+let confirmacion="";
+let mailTo;
+let popUp;
+const FECHA = new Date();
+const HORA = fecha.getHours();
+const DICCONTENEDOR=document.querySelector(".contenedor");
+const URL = "https://demo2420474.mockable.io/productList";
+const CUPONURL = "https://demo2420474.mockable.io/getCoupon";
 
 
 fetch(url).then (function(response){
-    return response.json()
+    return response.json();
 }).then(function(productos){
     productos.forEach(function(producto){
         crearProducto(producto);
@@ -24,10 +24,10 @@ fetch(url).then (function(response){
 
 if (localStorage.getItem("confirmacion")==null){
 
-    confirmacion = confirm("Desea ingresar Nombre e email?")
-    localStorage.setItem("confirmacion", confirmacion)
+    confirmacion = confirm("Desea ingresar Nombre e email?");
+    localStorage.setItem("confirmacion", confirmacion);
     if(confirmacion==true){
-        inicioUsuario()
+        inicioUsuario();
        
     }
     }
@@ -43,7 +43,7 @@ if (localStorage.getItem("confirmacion")==null){
        <div class="precio"> Precio:<strong>${producto.currency} ${producto.price}<strong></div><br>
        
         </div>
-        </div>`   
+        </div>`;  
         
     }else {
         divContenedor.innerHTML+= `<div class="caja"><img src="${producto.imgUrl}" id="foto1" title="${producto.title}">
@@ -53,38 +53,38 @@ if (localStorage.getItem("confirmacion")==null){
        <div class="stock"> En stock:${producto.inStock} unidades</div><br>
        <div class="precio"> Precio Antes:<strike> ${producto.currency} ${producto.price} </strike><br> Precio Ahora:<strong>${producto.currency} ${producto.discountPrice}</strong></div><br>
        </div>
-        </div>`   
+        </div>`;
     }
     }
     
     
     //Inicio de usuario
     function inicioUsuario(){
-        nombreValid()
-        emailValid()
-        saludaHoraInicio()
+        nombreValid();
+        emailValid();
+        saludaHoraInicio();
         
     }
     //Guardar nombre y validarlo
     function nombreValid(nombre){
         do {
-            nombre = prompt("Ingrese su nombre")
+            nombre = prompt("Ingrese su nombre");
             
             if(nombre.trim() == ""){
-                alert("Ingrese datos validos")
-            }else{return localStorage.setItem("nombre", nombre) }
+                alert("Ingrese datos validos");
+            }else{return localStorage.setItem("nombre", nombre);}
         } while (nombre=="" || nombre!==undefined);
     }
     //Guardar y validar email
     function guardarEmail(email){
     
-        email = prompt("Ingrese su email")
-        let arrEmail = email.split("")
+        email = prompt("Ingrese su email");
+        let arrEmail = email.split("");
         if(arrEmail.includes("@") && arrEmail.includes(".")){
-            localStorage.setItem("email", email)
-            enviarMail(mailTo)
+            localStorage.setItem("email", email);
+            enviarMail(mailTo);
             
-        }else{alert("Datos invalidos")}
+        }else{alert("Datos invalidos");}
      
     }
     
@@ -95,10 +95,10 @@ if (localStorage.getItem("confirmacion")==null){
     }
     //Preguntar para enviar mail
     function enviarMail(mail){
-    mail = confirm("Desea recibir mails con novedades?")
+    mail = confirm("Desea recibir mails con novedades?");
     if(mail == true){
-        alert("Estaremos enviandole las ultimas novedades a " + localStorage.getItem("email"))
-        localStorage.setItem("mail", mail)
+        alert("Estaremos enviandole las ultimas novedades a " + localStorage.getItem("email"));
+        localStorage.setItem("mail", mail);
        
         }
     }
@@ -126,15 +126,15 @@ if (localStorage.getItem("confirmacion")==null){
     function cuponDescuento() {
     fetch(cuponUrl)
     .then(function(response){
-        return response.json()
+        return response.json();
     }).then(function(cupones){
         
-            descuento(cupones)
+            descuento(cupones);
         
     })
 }
 
 function descuento(dato){
 
-    alert(`Con este codigo ${dato.text} tenes un descuento de ${dato.discountPercentage}%`)
+    alert(`Con este codigo ${dato.text} tenes un descuento de ${dato.discountPercentage}%`);
 }
