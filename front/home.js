@@ -5,8 +5,8 @@ let confirmacion = "";
 let mailTo;
 const FECHA = new Date();
 const HORA = fecha.getHours();
-let urlBanner = "https://demo2420474.mockable.io/getHomeBanner";
-const POSTURL = "https://demo2420474.mockable.io/userData";
+let urlBanner = "http://localhost:4200/banner";
+const POSTURL = "http://localhost:4200/user";
 
  //Posicionamiento
  let divBanner = document.querySelector(".banner");
