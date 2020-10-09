@@ -7,7 +7,7 @@ const FECHA = new Date();
 const HORA = FECHA.getHours();
 const DIVCONTENEDOR=document.querySelector(".contenedor");
 const URLPRODUCTO = "http://localhost:4200/productos";
-const CUPONURL = "http://localhost:4200/cupones";
+
 
 
 fetch(URLPRODUCTO).then (function(response){
@@ -31,7 +31,7 @@ if (localStorage.getItem("confirmacion")==null){
        
     }
     }
-    if(localStorage.getItem("nombre")){cuponDescuento()}
+    
     //Funciones
     function crearProducto(producto){
     if (producto.discountPrice === undefined ) {
@@ -121,21 +121,4 @@ if (localStorage.getItem("confirmacion")==null){
 
       
 
-    //Cupones
-     
-    function cuponDescuento() {
-    fetch(CUPONURL)
-    .then(function(response){
-        return response.json();
-    }).then(function(cupones){
-      descuento(cupones);
-        
-    })
-}
-
-function descuento(datos){
-   datos.forEach(function(dato){
-       
-       alert(`Con este codigo ${dato.text} tenes un descuento de ${dato.discountPercentage}%`);
-   }) 
-}
+    

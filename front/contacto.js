@@ -6,6 +6,7 @@ const FECHA = new Date();
 const HORA = FECHA.getHours();
 const POSTURL = "http://localhost:4200/user";
 const FORMURL = "http://localhost:4200/contactos";
+const CUPONURL = "http://localhost:4200/cupones";
 let arrForm =[];
 //Posicionamiento
 
@@ -26,7 +27,7 @@ if (localStorage.getItem("confirmacion")==null){
         
       }
     }  
-    
+    if(localStorage.getItem("nombre")){cuponDescuento()}
     let arrUsuario = {
         token: "GRUPOB2020",
     name: localStorage.getItem("nombre"),
@@ -140,3 +141,21 @@ function saludaHoraInicio() {
   }
   }
  
+  //Cupones
+     
+  function cuponDescuento() {
+    fetch(CUPONURL)
+    .then(function(response){
+        return response.json();
+    }).then(function(cupones){
+      descuento(cupones);
+        
+    })
+    }
+
+function descuento(datos){
+   datos.forEach(function(dato){
+       
+       alert(`Con este codigo ${dato.text} tenes un descuento de ${dato.discountPercentage}%`);
+   }) 
+}

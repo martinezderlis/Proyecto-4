@@ -109,7 +109,7 @@ console.log(json);
     let hora = fecha + name + email;
 
     
-    
+    console.log(hora)
     return localStorage.setItem("token",hora)
   }
   token();
