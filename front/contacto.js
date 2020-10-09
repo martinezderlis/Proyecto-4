@@ -29,7 +29,7 @@ if (localStorage.getItem("confirmacion")==null){
     }  
     if(localStorage.getItem("nombre")){cuponDescuento()}
     let arrUsuario = {
-        token: "GRUPOB2020",
+        token: localStorage.getItem("token"),
     name: localStorage.getItem("nombre"),
     email: localStorage.getItem("email"),
     sendEmail: localStorage.getItem("mail")
@@ -159,3 +159,15 @@ function descuento(datos){
        alert(`Con este codigo ${dato.text} tenes un descuento de ${dato.discountPercentage}%`);
    }) 
 }
+
+function token(){
+    let name = "";
+    let email = "";
+    let fecha = new Date();
+    let hora = fecha + name + email;
+
+    
+    console.log(hora)
+    return localStorage.setItem("token",hora)
+  }
+  token();
