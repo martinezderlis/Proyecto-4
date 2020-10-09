@@ -4,13 +4,13 @@ let confirmacion="";
 let mailTo;
 let popUp;
 const FECHA = new Date();
-const HORA = fecha.getHours();
-const DICCONTENEDOR=document.querySelector(".contenedor");
-const URL = "https://demo2420474.mockable.io/productList";
-const CUPONURL = "https://demo2420474.mockable.io/getCoupon";
+const HORA = FECHA.getHours();
+const DIVCONTENEDOR=document.querySelector(".contenedor");
+const URLPRODUCTO = "http://localhost:4200/productos";
+const CUPONURL = "http://localhost:4200/cupones";
 
 
-fetch(url).then (function(response){
+fetch(URLPRODUCTO).then (function(response){
     return response.json();
 }).then(function(productos){
     productos.forEach(function(producto){
@@ -35,7 +35,7 @@ if (localStorage.getItem("confirmacion")==null){
     //Funciones
     function crearProducto(producto){
     if (producto.discountPrice === undefined ) {
-        divContenedor.innerHTML+= `<div class="caja"><img src="${producto.imgUrl}" id="foto1" title="${producto.title}">
+        DIVCONTENEDOR.innerHTML+= `<div class="caja"><img src="${producto.imgUrl}" id="foto1" title="${producto.title}">
         <div class="texto">
         <h5>${producto.title}</h5>
        <div class="descripcion"> ${producto.description}</div><br>
@@ -46,7 +46,7 @@ if (localStorage.getItem("confirmacion")==null){
         </div>`;  
         
     }else {
-        divContenedor.innerHTML+= `<div class="caja"><img src="${producto.imgUrl}" id="foto1" title="${producto.title}">
+        DIVCONTENEDOR.innerHTML+= `<div class="caja"><img src="${producto.imgUrl}" id="foto1" title="${producto.title}">
         <div class="texto">
         <h5>${producto.title}</h5>
        <div class="descripcion"> ${producto.description}</div><br>
@@ -122,19 +122,20 @@ if (localStorage.getItem("confirmacion")==null){
       
 
     //Cupones
-
+     
     function cuponDescuento() {
-    fetch(cuponUrl)
+    fetch(CUPONURL)
     .then(function(response){
         return response.json();
     }).then(function(cupones){
-        
-            descuento(cupones);
+      descuento(cupones);
         
     })
 }
 
-function descuento(dato){
-
-    alert(`Con este codigo ${dato.text} tenes un descuento de ${dato.discountPercentage}%`);
+function descuento(datos){
+   datos.forEach(function(dato){
+       
+       alert(`Con este codigo ${dato.text} tenes un descuento de ${dato.discountPercentage}%`);
+   }) 
 }

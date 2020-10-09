@@ -4,10 +4,9 @@ let email = "";
 let confirmacion = "";
 let mailTo;
 const FECHA = new Date();
-const HORA = fecha.getHours();
+const HORA = FECHA.getHours();
 let urlBanner = "http://localhost:4200/banner";
 const POSTURL = "http://localhost:4200/user";
-
  //Posicionamiento
  let divBanner = document.querySelector(".banner");
 
@@ -26,8 +25,9 @@ fetch(urlBanner)
 .then(function(response){
   return response.json();
 })
-.then(function(arrImagen){
-  imagenDOM(arrImagen, divBanner);
+.then(function(json){
+  imagenDOM(json,divBanner)
+  
   })
  
   let arrUsuario = {
@@ -36,7 +36,7 @@ name: localStorage.getItem("nombre"),
 email: localStorage.getItem("email"),
 sendEmail: localStorage.getItem("mail")
 }
-fetch(postUrl,{
+fetch(POSTURL,{
 method: 'POST',
 body: JSON.stringify(arrUsuario) ,
 headers:{'Content-Type':'application/json'}
@@ -48,9 +48,11 @@ console.log(json);
   
   //Funciones
 
-  function imagenDOM(imagen, banner){
+  function imagenDOM(datos, banner){
+    datos.forEach(function(dato){
 
-    banner.innerHTML += `<a title= "LinkImagen" href= "${imagen.link}"><img src = "${imagen.imgUrl}" title = "${imagen.title}" alt="LinkImagen" ></a>`;
+      banner.innerHTML += `<a title= "LinkImagen" href= "${dato.link}"><img src = "${dato.imgUrl}" title = "${dato.title}" alt="LinkImagen" ></a>`;
+    })
 
   }
  

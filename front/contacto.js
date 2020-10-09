@@ -3,9 +3,9 @@ let email = "";
 let confirmacion="";
 let mailTo
 const FECHA = new Date();
-const HORA = fecha.getHours();
-const POSTURL = "https://demo2420474.mockable.io/userData";
-const FORMURL = "https://demo2420474.mockable.io/submitForm";
+const HORA = FECHA.getHours();
+const POSTURL = "http://localhost:4200/user";
+const FORMURL = "http://localhost:4200/contactos";
 let arrForm =[];
 //Posicionamiento
 
@@ -33,7 +33,7 @@ if (localStorage.getItem("confirmacion")==null){
     email: localStorage.getItem("email"),
     sendEmail: localStorage.getItem("mail")
 }
-fetch(postUrl,{
+fetch(POSTURL,{
     method: 'POST',
     body: JSON.stringify(arrUsuario) ,
     headers:{'Content-Type':'application/json'}
@@ -58,7 +58,7 @@ function enviarForm(){
         subject: selectTema.value,
         message: textMensaje.value
     }
-    fetch(formUrl,{
+    fetch(FORMURL,{
         method: 'POST',
         body: JSON.stringify(arrForm),
         headers:{'Content-Type':'application/json'}

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const UsuarioModel = require('./Usuario');
+
 
 const bannerSchema = new mongoose.Schema({
     title:String,
@@ -7,5 +7,5 @@ const bannerSchema = new mongoose.Schema({
     link:String
 });
 
-const bannerModel = mongoose.model('Banner', bannerSchema);
-module.exports = bannerModel;
+const BannerModel = mongoose.model('Banner', bannerSchema);
+module.exports = BannerModel;
