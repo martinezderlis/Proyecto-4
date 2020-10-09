@@ -31,7 +31,7 @@ fetch(urlBanner)
   })
  
   let arrUsuario = {
-    token: "GRUPOB2020",
+    token:localStorage.getItem("token"),
 name: localStorage.getItem("nombre"),
 email: localStorage.getItem("email"),
 sendEmail: localStorage.getItem("mail")
@@ -101,7 +101,19 @@ console.log(json);
       
     }
   }
-  
+
+  function token(){
+    let name = "";
+    let email = "";
+    let fecha = new Date();
+    let hora = fecha + name + email;
+
+    
+    
+    return localStorage.setItem("token",hora)
+  }
+  token();
+
   
 
 
