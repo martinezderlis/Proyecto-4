@@ -66,7 +66,7 @@ app.get('/cupones/:id',function(req,res){
     let ID = req.params.id
     Cupon.findById(ID).then(function(cupon){
         console.log(cupon)
-        return res.status(200).send({cupon:cupon})
+        return res.status(200).send(cupon)
     })
 })
 //GET Productos all y por Id
